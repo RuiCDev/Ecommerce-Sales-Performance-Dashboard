@@ -7515,7 +7515,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># ==========================================</span>
@@ -7528,57 +7528,38 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b75a04ac-81e8-4e85-ae50-f2bfca3b3403">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pymysql
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Requirement already satisfied: pymysql in c:\users\alvar\anaconda3\lib\site-packages (1.1.2)
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fdf022d9-f1e6-41bf-ac97-633ae3294294">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
 
-<span class="c1"># 1. Credentials Configuration</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">"root"</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s2">""</span>  <span class="c1"># Se tiveres password, coloca-a aqui</span>
-<span class="n">host</span> <span class="o">=</span> <span class="s2">"localhost"</span>
-<span class="n">database</span> <span class="o">=</span> <span class="s2">"ecommerce_project"</span>
+<span class="c1"># 1. Load environment variables from .env file</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
 
-<span class="c1"># 2. Create SQLAlchemy Engine</span>
-<span class="c1"># The 'mysql+pymysql' prefix is the recommended standard for MySQL connections</span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s2">"mysql+pymysql://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">database</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="c1"># 2. Database Credentials Configuration</span>
+<span class="c1"># Using os.getenv for security; empty string as fallback for local password</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_USER"</span><span class="p">)</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_PASS"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span>  
+<span class="n">db_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_HOST"</span><span class="p">)</span>
+<span class="n">db_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_NAME"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Ligação via SQLAlchemy: OK"</span><span class="p">)</span>
+<span class="c1"># 3. Create SQLAlchemy Engine</span>
+<span class="c1"># Connection string using the 'mysql+pymysql' dialect</span>
+<span class="n">connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"mysql+pymysql://</span><span class="si">{</span><span class="n">db_user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_password</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">db_host</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">connection_url</span><span class="p">)</span>
 
-<span class="c1"># 3. SQL Query for Data Extraction</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Connection by SQLAlchemy: OK"</span><span class="p">)</span>
+
+<span class="c1"># 4. SQL Query for Data Extraction</span>
+<span class="c1"># Selecting key e-commerce metrics for analysis</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">SELECT </span>
 <span class="s2">    o.order_purchase_timestamp,</span>
@@ -7589,15 +7570,19 @@ a.anchor-link {
 <span class="s2">JOIN customers c ON o.customer_id = c.customer_id</span>
 <span class="s2">"""</span>
 
-<span class="c1"># 4. Load Data using the engine</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
-
-<span class="c1"># 5. Data Preprocessing: Convert timestamp to datetime objects</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'order_purchase_timestamp'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'order_purchase_timestamp'</span><span class="p">])</span>
-
-<span class="c1"># Displaying initial results</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Dados carregados: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> linhas."</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="c1"># 5. Load Data into Pandas DataFrame</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+    
+    <span class="c1"># 6. Data Preprocessing</span>
+    <span class="c1"># Converting the timestamp column to datetime objects</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">'order_purchase_timestamp'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'order_purchase_timestamp'</span><span class="p">])</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Data successfully loaded: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> lines."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+    
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error loading data: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7610,71 +7595,15 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Ligação via SQLAlchemy: OK
-Dados carregados: 103886 linhas.
+<pre>Connection by SQLAlchemy: OK
+Data successfully loaded: 103886 lines.
+  order_purchase_timestamp  payment_value customer_state
+0      2017-07-29 20:08:40         342.56             MG
+1      2017-03-10 20:04:32         130.22             SP
+2      2017-04-23 18:13:00         208.41             SP
+3      2018-03-07 15:32:34          67.42             SP
+4      2017-02-20 19:21:23         232.05             RJ
 </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>order_purchase_timestamp</th>
-<th>payment_value</th>
-<th>customer_state</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>2017-07-29 20:08:40</td>
-<td>342.56</td>
-<td>MG</td>
-</tr>
-<tr>
-<th>1</th>
-<td>2017-03-10 20:04:32</td>
-<td>130.22</td>
-<td>SP</td>
-</tr>
-<tr>
-<th>2</th>
-<td>2017-04-23 18:13:00</td>
-<td>208.41</td>
-<td>SP</td>
-</tr>
-<tr>
-<th>3</th>
-<td>2018-03-07 15:32:34</td>
-<td>67.42</td>
-<td>SP</td>
-</tr>
-<tr>
-<th>4</th>
-<td>2017-02-20 19:21:23</td>
-<td>232.05</td>
-<td>RJ</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
@@ -7684,7 +7613,7 @@ Dados carregados: 103886 linhas.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -7710,7 +7639,7 @@ Dados carregados: 103886 linhas.
          <span class="n">color</span><span class="o">=</span><span class="s1">'#2c3e50'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> 
          <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># --- 3. X-Axis Strategy (Optimizing readability) ---</span>
+<span class="c1"># --- 3. X-Axis Strategy (Optimising readability) ---</span>
 <span class="c1"># Displaying only 1 out of every 2 months to provide more visual space</span>
 <span class="n">ticks_to_show</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">monthly_revenue</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">labels_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="n">monthly_revenue</span><span class="p">[</span><span class="s1">'month_label'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ticks_to_show</span><span class="p">]</span>
@@ -7763,7 +7692,7 @@ Dados carregados: 103886 linhas.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -7776,7 +7705,7 @@ Dados carregados: 103886 linhas.
 <span class="c1"># 2. Chart Configuration</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="c1"># Utilizing 'hue' and 'legend=False' to ensure compatibility with modern Seaborn versions</span>
+<span class="c1"># Utilising 'hue' and 'legend=False' to ensure compatibility with modern Seaborn versions</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="n">state_revenue</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
     <span class="n">y</span><span class="o">=</span><span class="n">state_revenue</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
@@ -7833,11 +7762,11 @@ Dados carregados: 103886 linhas.
 <li><strong>Strategic Recommendation:</strong> Optimize logistics and "Last Mile" delivery in SP, RJ, and MG to protect margins, while piloting targeted acquisition campaigns in Southern states to diversify the revenue base.</li>
 </ul>
 <h3 id="3.-Hourly-Sales-Velocity">3. Hourly Sales Velocity<a class="anchor-link" href="#3.-Hourly-Sales-Velocity">¶</a></h3><ul>
-<li><strong>Prime Time Windows:</strong> Orders peak between <strong>10:00–12:00</strong> and <strong>19:00–21:00</strong>.</li>
-<li><strong>Tactical Application:</strong> Marketing spend (ads, emails, push notifications) should be concentrated 30 to 60 minutes before these peak windows to maximize the Conversion Rate (CR).</li>
+<li><strong>Prime Time Windows:</strong> Orders peak between <strong>10:00 to 12:00</strong> and <strong>19:00 to 21:00</strong>.</li>
+<li><strong>Tactical Application:</strong> Marketing spend (ads, emails, push notifications) should be concentrated 30 to 60 minutes before these peak windows to maximise the Conversion Rate (CR).</li>
 </ul>
 <hr/>
-<p><strong>Executive Summary:</strong> The business is in a strong growth phase. Future success depends on maintaining the momentum in the Southeast while leveraging data-driven marketing timing to optimize the return on advertising spend (ROAS).</p>
+<p><strong>Executive Summary:</strong> The business is in a strong growth phase. Future success depends on maintaining the momentum in the Southeast while leveraging data-driven marketing timing to optimise the return on advertising spend (ROAS).</p>
 </div>
 </div>
 </div>

@@ -10,13 +10,13 @@ E-commerce businesses generate large volumes of transactional and customer data,
 - Customer distribution and regional performance  
 - Operational efficiency (e.g., delivery performance)  
 
-Without proper analysis, this limits the ability to optimize growth, logistics, and market expansion.
+Without proper analysis, this limits the ability to optimise growth, logistics, and market expansion.
 
 ---
 
 ## 🎯 Objective
 
-Analyze e-commerce data to:
+Analyse e-commerce data to:
 
 - Identify revenue growth trends  
 - Understand customer and regional distribution  
@@ -32,7 +32,7 @@ This project combines **SQL, Python, and Power BI** to deliver a complete analyt
 Key components:
 
 - Data extraction and transformation using SQL  
-- Data analysis and visualization in Python  
+- Data analysis and visualisation in Python  
 - Interactive Power BI dashboard for business monitoring  
 
 ---
@@ -40,9 +40,25 @@ Key components:
 ## 🛠️ Tech Stack
 
 - SQL (MySQL) – data extraction and joins  
-- Python (Pandas, Matplotlib, Seaborn) – analysis and visualization  
+- Python (Pandas, Matplotlib, Seaborn) – analysis and visualisation  
 - Power BI – dashboard and KPI tracking  
 - Git & GitHub – version control  
+
+---
+
+## 🔑 Database Configuration (Required)
+
+For security reasons, database credentials are not stored in the code. To run this project locally, you must:
+
+1. **Create** a file named `.env` in the root folder.
+2. **Add** your MySQL credentials to the file:
+
+```text
+DB_USER=your_username
+DB_PASS=your_password
+DB_HOST=localhost
+DB_NAME=ecommerce_project
+```
 
 ---
 
@@ -83,7 +99,7 @@ The dashboard provides an executive view of e-commerce performance.
 This analysis enables:
 
 - Identification of growth opportunities across regions  
-- Better logistics and delivery optimization  
+- Better logistics and delivery optimisation  
 - Improved strategic planning based on sales trends  
 - Support for expansion and market diversification decisions  
 

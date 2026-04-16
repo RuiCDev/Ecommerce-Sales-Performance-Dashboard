@@ -1,0 +1,35 @@
+# --- Security & Credentials ---
+# Stores database passwords and private keys
+.env
+
+# --- Editor Settings ---
+# Local VS Code configurations
+.vscode/
+
+# --- Jupyter Notebooks ---
+# Temporary files and checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# --- Python & System ---
+# Compiled python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / Build / Virtual Environments
+build/
+dist/
+*.egg-info/
+venv/
+env/
+.venv/
+
+# --- Operating System ---
+# Windows
+Thumbs.db
+Desktop.ini
+db.json
+
+# macOS
+.DS_Store
